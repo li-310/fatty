@@ -1,20 +1,23 @@
-<template>
-  <p>{{ greeting }} World!</p>
-</template>
+<script setup>
+import { ref } from 'vue-demi'
+import { Button } from '../bridgeUi';
 
-<script>
-module.exports = {
-  data: function() {
-    return {
-      greeting: "Hello"
-    };
-  }
-};
+const greeting = ref('Hello World!')
+const fn = () => {
+  alert('click')
+}
 </script>
 
-<style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
+<template>
+  <div>
+    <p>{{ greeting }}</p>
+    123<Button @click="fn">1</Button>
+  </div>
+</template>
+
+<style>
+.greeting {
+  color: red;
+  font-weight: bold;
 }
 </style>

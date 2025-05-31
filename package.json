@@ -1,20 +1,22 @@
 {
-  "name": "@li/fatty",
-  "version": "1.0.0",
+  "name": "@leo-mm/fatty",
+  "version": "1.0.18",
   "description": "业务组件库",
   "scripts": {
-    "dev": "vite",
-    "build": "npm run clean && npm run build:2 && npm run build:3",
+    "dev:2": "npm run switch:2 && vite",
+    "dev:3": "npm run switch:3 && vite",
+    "prebuild": "npm run clean",
+    "build": "npm run build:2 && npm run build:3",
+    "build:2": "npm run switch:2 && vite build",
+    "build:3": "npm run switch:3 && vite build",
     "type-check": "vue-tsc --noEmit",
     "switch:2": "npx vue-demi-switch 2 vue2",
     "switch:3": "npx vue-demi-switch 3 vue3",
-    "build:3": "npm run switch:3 && rollup -c",
-    "build:2": "npm run switch:2 && rollup -c",
     "clean": "rimraf ./dist",
+    "preview": "vite preview --port 8080",
     "postinstall": "node ./scripts/postinstall.mjs"
   },
   "type": "module",
-  "types": "dist/index.d.ts",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "repository": {
@@ -25,64 +27,48 @@
     "import": "./dist/esm/index.js",
     "require": "./dist/cjs/index.js"
   },
-  "files": [
-    "dist"
-  ],
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/li-310/fatty/issues"
   },
   "homepage": "https://github.com/li-310/fatty#readme",
   "peerDependencies": {
     "@vue/composition-api": "^1.1.4",
-    "vue": "^2.0.0 || >=3.0.0"
+    "vue": "^2.0.0 || >=3.0.0",
+   "element-ui": "^2",
+   "element-plus": "^3"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.18.2",
-    "@babel/preset-typescript": "^7.27.1",
-    "@rollup/plugin-babel": "^5.3.1",
-    "@rollup/plugin-commonjs": "^21.0.2",
-    "@rollup/plugin-image": "^2.1.1",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "@rollup/plugin-typescript": "^12.1.2",
     "@vitejs/plugin-vue": "^3.0.3",
-    "@vue/compiler-sfc": "^3.2.13",
-    "@vue/composition-api": "^1.0.0-rc.1",
-    "@vuese/markdown-render": "^2.11.3",
-    "@vuese/parser": "^2.10.3",
-    "cssnano": "^5.1.10",
-    "less": "^4.1.2",
-    "postcss-nested": "^5.0.6",
-    "postcss-nesting": "10.1.10",
-    "postcss-px-to-viewport": "^1.1.1",
-    "postcss-simple-vars": "^6.0.3",
-    "postcss-url": "^10.1.3",
+    "element-plus": "^2.9.11",
+    "element-ui": "^2.15.14",
     "rimraf": "^3.0.2",
-    "rollup": "^2.0.0",
-    "rollup-plugin-dts": "^6.2.1",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-vue": "^5.1.9",
+    "unplugin-auto-import": "^19.3.0",
+    "unplugin-vue-components": "^28.7.0",
     "unplugin-vue2-script-setup": "0.11.3",
-    "vite": "3.0.7",
-    "vite-plugin-html": "2.0.7",
+    "vite": "^6.3.5",
+    "vite-plugin-html": "^3.2.2",
     "vite-plugin-vue2": "^2.0.2",
     "vue": "2.6.14",
     "vue-demi": "^0.13.7",
     "vue-template-compiler": "2.6.14",
     "vue2": "npm:vue@2.6.14",
-    "vue3": "npm:vue@^3.2.36",
-    "rollup-plugin-vue2": "npm:rollup-plugin-vue@^5.1.9",
-    "rollup-plugin-vue3": "npm:rollup-plugin-vue@^6.0.0-beta.11"
+    "vue3": "npm:vue@^3.2.36"
   },
   "dependencies": {
     "vue-demi": "^0.13.7"
   },
+  "files": ["dist", "scripts", "package.json"],
   "peerDependenciesMeta": {
     "@vue/composition-api": {
+      "optional": true
+    },
+    "element-ui": {
+      "optional": true
+    },
+    "element-plus": {
       "optional": true
     }
   }
